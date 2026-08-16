@@ -1,0 +1,19 @@
+services:
+  smartbin-cloud:
+    build: .
+    container_name: smartbin-cloud
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      APP_NAME: 智能垃圾分类物联网平台
+      DATABASE_PATH: /data/smartbin.db
+      ADMIN_TOKEN: ${ADMIN_TOKEN:?请先在 .env 中设置 ADMIN_TOKEN}
+      APP_SECRET: ${APP_SECRET:?请先在 .env 中设置 APP_SECRET}
+      DEVICE_OFFLINE_SECONDS: 8
+      HISTORY_SAMPLE_SECONDS: 5
+      HISTORY_RETENTION_DAYS: 7
+      PUBLIC_DASHBOARD: "true"
+      DOCS_ENABLED: "false"
+    volumes:
+      - ./data:/data

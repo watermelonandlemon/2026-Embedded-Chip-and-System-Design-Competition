@@ -1,0 +1,22 @@
+[Unit]
+Description=SmartBin Cloud API and Dashboard
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=smartbin
+Group=smartbin
+WorkingDirectory=/opt/smartbin-cloud
+EnvironmentFile=/opt/smartbin-cloud/.env
+ExecStart=/opt/smartbin-cloud/.venv/bin/uvicorn app.main:app --host 127.0.0.1 --port 8000 --workers 1 --proxy-headers --forwarded-allow-ips=*
+Restart=always
+RestartSec=3
+TimeoutStopSec=10
+PrivateTmp=true
+NoNewPrivileges=true
+ProtectSystem=full
+ReadWritePaths=/opt/smartbin-cloud/data
+
+[Install]
+WantedBy=multi-user.target

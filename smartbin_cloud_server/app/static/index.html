@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#071525">
+  <title>智能垃圾分类物联网平台</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <div class="grid-bg"></div>
+  <header class="topbar">
+    <div class="brand-block">
+      <div class="brand-mark"><span></span><span></span><span></span></div>
+      <div>
+        <div class="eyebrow">CUSTOM LIGHTWEIGHT IOT INTERFACE</div>
+        <h1>智能垃圾分类物联网管理平台</h1>
+      </div>
+    </div>
+    <div class="top-actions">
+      <div class="cloud-state"><i id="cloudDot"></i><span id="cloudText">云端连接检测中</span></div>
+      <button class="button ghost" id="adminLoginBtn">管理员登录</button>
+      <button class="button primary hidden" id="addDeviceBtn">新增垃圾桶</button>
+    </div>
+  </header>
+
+  <main class="dashboard">
+    <section class="metrics-row">
+      <article class="metric-card">
+        <div class="metric-label">全国接入节点</div>
+        <div class="metric-value" id="networkDevices">--</div>
+        <div class="metric-note">含全国模拟节点与真实接入设备</div>
+      </article>
+      <article class="metric-card">
+        <div class="metric-label">哈尔滨真实设备</div>
+        <div class="metric-value" id="realDevices">--</div>
+        <div class="metric-note"><span class="online-inline" id="onlineDevices">-- 在线</span></div>
+      </article>
+      <article class="metric-card">
+        <div class="metric-label">全国累计分类</div>
+        <div class="metric-value" id="classifiedTotal">--</div>
+        <div class="metric-note">模拟展示值 + 哈尔滨真实计数</div>
+      </article>
+      <article class="metric-card accent-card">
+        <div class="metric-label">哈尔滨真实累计</div>
+        <div class="metric-value" id="realClassified">--</div>
+        <div class="metric-note">由 RDK X5 每秒上报</div>
+      </article>
+    </section>
+
+    <section class="main-grid">
+      <article class="panel map-panel">
+        <div class="panel-head">
+          <div>
+            <div class="panel-kicker">NATIONAL NODE TOPOLOGY</div>
+            <h2>全国节点态势</h2>
+          </div>
+          <span class="tag">模拟 + 真实</span>
+        </div>
+        <div class="map-stage" id="mapStage">
+          <div class="china-shape"></div>
+          <div class="map-radar radar-a"></div>
+          <div class="map-radar radar-b"></div>
+          <div class="harbin-anchor" style="left:79%;top:18%">
+            <span class="pulse"></span>
+            <strong>哈尔滨</strong>
+            <em id="harbinMapValue">真实设备 --</em>
+          </div>
+        </div>
+        <div class="map-legend">
+          <span><i class="legend-dot fake"></i>全国模拟节点</span>
+          <span><i class="legend-dot real"></i>哈尔滨真实节点</span>
+        </div>
+      </article>
+
+      <article class="panel category-panel">
+        <div class="panel-head">
+          <div>
+            <div class="panel-kicker">REAL-TIME CLASSIFICATION</div>
+            <h2>哈尔滨实时分类统计</h2>
+          </div>
+          <span class="tag real-tag">真实数据</span>
+        </div>
+        <div class="category-grid">
+          <div class="category-card recyclable">
+            <div class="category-icon">♻</div>
+            <div><span>可回收垃圾</span><strong id="recyclableCount">0</strong></div>
+          </div>
+          <div class="category-card kitchen">
+            <div class="category-icon">叶</div>
+            <div><span>厨余垃圾</span><strong id="kitchenCount">0</strong></div>
+          </div>
+          <div class="category-card hazardous">
+            <div class="category-icon">!</div>
+            <div><span>有害垃圾</span><strong id="hazardousCount">0</strong></div>
+          </div>
+          <div class="category-card other">
+            <div class="category-icon">□</div>
+            <div><span>其他垃圾</span><strong id="otherCount">0</strong></div>
+          </div>
+        </div>
+        <div class="chart-wrap">
+          <div class="chart-title"><span>实时累计趋势</span><small>最近采样点</small></div>
+          <canvas id="trendChart" width="720" height="250"></canvas>
+          <div class="empty-chart" id="emptyChart">等待哈尔滨真实设备上报数据</div>
+        </div>
+      </article>
+    </section>
+
+    <section class="panel device-panel">
+      <div class="panel-head device-head">
+        <div>
+          <div class="panel-kicker">DEVICE MANAGEMENT</div>
+          <h2>真实垃圾桶节点</h2>
+        </div>
+        <div class="refresh-info">最后刷新：<span id="lastRefresh">--</span></div>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+          <tr>
+            <th>状态</th><th>设备编号</th><th>设备名称</th><th>城市</th>
+            <th>可回收</th><th>厨余</th><th>有害</th><th>其他</th>
+            <th>最后上报</th><th>控制</th>
+          </tr>
+          </thead>
+          <tbody id="deviceBody">
+          <tr><td colspan="10" class="empty-row">尚未接入真实设备</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>RDK X5 智能垃圾分类系统 · 自定义轻量 IoT 接口</span>
+    <span id="serverClock">--</span>
+  </footer>
+
+  <dialog id="loginDialog" class="modal">
+    <form method="dialog" id="loginForm">
+      <div class="modal-head"><h3>管理员登录</h3><button value="cancel" class="icon-btn">×</button></div>
+      <label>管理员令牌<input id="adminTokenInput" type="password" autocomplete="current-password" placeholder="填写服务器 ADMIN_TOKEN"></label>
+      <p class="help">令牌仅保存在当前浏览器会话中。</p>
+      <div class="modal-actions"><button value="cancel" class="button ghost">取消</button><button type="submit" value="default" class="button primary">登录</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="deviceDialog" class="modal">
+    <form method="dialog" id="deviceForm">
+      <div class="modal-head"><h3>新增垃圾桶</h3><button value="cancel" class="icon-btn">×</button></div>
+      <div class="form-grid">
+        <label>设备名称<input name="name" required value="哈尔滨智能垃圾桶"></label>
+        <label>所在城市<input name="city" required value="哈尔滨"></label>
+        <label>自定义编号（可空）<input name="device_id" placeholder="例如 HB-001"></label>
+        <label>备注<input name="note" placeholder="例如 演示设备 / 一号机"></label>
+        <label>经度（可空）<input name="longitude" type="number" step="any" value="126.6424"></label>
+        <label>纬度（可空）<input name="latitude" type="number" step="any" value="45.7567"></label>
+      </div>
+      <div class="modal-actions"><button value="cancel" class="button ghost">取消</button><button type="submit" value="default" class="button primary">创建设备</button></div>
+    </form>
+  </dialog>
+
+  <dialog id="credentialDialog" class="modal credential-modal">
+    <form method="dialog">
+      <div class="modal-head"><h3>设备创建成功</h3><button value="cancel" class="icon-btn">×</button></div>
+      <div class="warning-box">设备密钥只返回一次，请立即复制保存。</div>
+      <label>设备编号<div class="copy-row"><input id="createdDeviceId" readonly><button type="button" class="button ghost copy-btn" data-copy="createdDeviceId">复制</button></div></label>
+      <label>设备密钥<div class="copy-row"><input id="createdDeviceKey" readonly><button type="button" class="button ghost copy-btn" data-copy="createdDeviceKey">复制</button></div></label>
+      <label>RDK 环境变量示例<textarea id="createdEnv" rows="5" readonly></textarea></label>
+      <div class="modal-actions"><button value="default" class="button primary">已保存</button></div>
+    </form>
+  </dialog>
+
+  <div id="toast" class="toast"></div>
+  <script src="/static/app.js"></script>
+</body>
+</html>

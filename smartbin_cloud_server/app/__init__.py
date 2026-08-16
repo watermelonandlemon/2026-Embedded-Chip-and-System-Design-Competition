@@ -1,0 +1,1 @@
+"""SmartBin cloud server package."""

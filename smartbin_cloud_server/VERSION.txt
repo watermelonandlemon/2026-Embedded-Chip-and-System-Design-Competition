@@ -1,0 +1,3 @@
+SmartBin cloud server package
+Build: 2026-07-26
+API: /api/iot/v1
