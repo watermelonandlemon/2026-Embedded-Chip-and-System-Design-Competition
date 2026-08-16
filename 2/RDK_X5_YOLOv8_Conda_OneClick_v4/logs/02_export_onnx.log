@@ -1,0 +1,16 @@
+[Patch] 22: Detect
+Ultralytics 8.3.183 🚀 Python-3.10.20 torch-2.7.0+cpu CPU (AMD EPYC 7A23 48-Core Processor)
+Model summary (fused): 72 layers, 11,127,132 parameters, 0 gradients, 28.4 GFLOPs
+
+[34m[1mPyTorch:[0m starting from '/home/ubuntu/lxy/2/RDK_X5_YOLOv8_Conda_OneClick_v4/model/best.pt' with input shape (1, 3, 640, 640) BCHW and output shape(s) ((1, 80, 80, 4), (1, 80, 80, 64), (1, 40, 40, 4), (1, 40, 40, 64), (1, 20, 20, 4), (1, 20, 20, 64)) (21.5 MB)
+
+[34m[1mONNX:[0m starting export with onnx 1.15.0 opset 11...
+[34m[1mONNX:[0m export success ✅ 1.1s, saved as '/home/ubuntu/lxy/2/RDK_X5_YOLOv8_Conda_OneClick_v4/model/best.onnx' (42.5 MB)
+
+Export complete (2.4s)
+Results saved to [1m/home/ubuntu/lxy/2/RDK_X5_YOLOv8_Conda_OneClick_v4/model[0m
+Predict:         yolo predict task=detect model=/home/ubuntu/lxy/2/RDK_X5_YOLOv8_Conda_OneClick_v4/model/best.onnx imgsz=640  
+Validate:        yolo val task=detect model=/home/ubuntu/lxy/2/RDK_X5_YOLOv8_Conda_OneClick_v4/model/best.onnx imgsz=640 data=C:\Users\li\Downloads\0802\yolov8\my_dataset\dataset.yaml  
+Visualize:       https://netron.app
+已替换模块数量: 1
+ONNX 输出: /home/ubuntu/lxy/2/RDK_X5_YOLOv8_Conda_OneClick_v4/model/best.onnx

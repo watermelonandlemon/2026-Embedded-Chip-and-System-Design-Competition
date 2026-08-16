@@ -1,0 +1,12 @@
+ONNX: /home/ubuntu/lxy/2/RDK_X5_YOLOv8_Conda_OneClick_v4/model/best.onnx
+IR version: 6
+Opset: {'ai.onnx': 11}
+Input: name=images, shape=[1, 3, 640, 640], type=tensor(float)
+Output[0]: name=output0, shape=[1, 80, 80, 4], dtype=float32
+Output[1]: name=326, shape=[1, 80, 80, 64], dtype=float32
+Output[2]: name=334, shape=[1, 40, 40, 4], dtype=float32
+Output[3]: name=342, shape=[1, 40, 40, 64], dtype=float32
+Output[4]: name=350, shape=[1, 20, 20, 4], dtype=float32
+Output[5]: name=358, shape=[1, 20, 20, 64], dtype=float32
+推断类别数: 4
+ONNX 检查通过，报告：/home/ubuntu/lxy/2/RDK_X5_YOLOv8_Conda_OneClick_v4/output/onnx_report.json
