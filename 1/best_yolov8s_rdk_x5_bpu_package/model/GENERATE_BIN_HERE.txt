@@ -1,2 +1,0 @@
-运行 ../conversion/convert_to_bin.sh 后，本目录将生成：
-best_yolov8s_bpu_bayese_640x640_nv12.bin

@@ -1,5 +1,0 @@
-# x86 Ubuntu conversion environment
-rdkx5-yolo-mapper
-opencv-python
-numpy
-onnxruntime
