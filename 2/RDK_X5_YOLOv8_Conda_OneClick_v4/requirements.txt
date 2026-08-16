@@ -1,5 +1,0 @@
-# 与用户训练日志一致，固定 Ultralytics 版本。
-ultralytics==8.3.183
-
-# D-Robotics RDK X5 官方轻量模型转换工具链。
-rdkx5-yolo-mapper==1.0.0

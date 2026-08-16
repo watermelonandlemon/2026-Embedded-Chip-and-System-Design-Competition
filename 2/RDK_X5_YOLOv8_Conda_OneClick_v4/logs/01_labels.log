@@ -1,7 +1,0 @@
-任务类型: detect
-类别数量: 4
-  0: zhituan
-  1: pinggai
-  2: dianchi
-  3: jiaodai
-类别文件: /home/ubuntu/lxy/2/RDK_X5_YOLOv8_Conda_OneClick_v4/output/labels.txt
