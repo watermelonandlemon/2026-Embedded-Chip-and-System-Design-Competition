@@ -1,0 +1,112 @@
+# 固定部署目录：/home/sunrise/code/all
+# 全局垃圾编号 a：-1=无目标，0=可回收，1=厨余，2=有害，3=其他。
+
+paths:
+  count_yaml: "/home/sunrise/code/all/src/count.yaml"
+  count_lock: "/tmp/rdk_smartbin_count.lock"
+  latest_frame: "/dev/shm/rdk_smartbin_latest.png"
+
+miniros:
+  host: "127.0.0.1"
+  port: 8765
+  connect_timeout_s: 5.0
+  reconnect_interval_s: 1.0
+  topics:
+    vision_result: "/vision/result"
+    manual_request: "/actuator/request/manual"
+    actuator_executed: "/actuator/executed"
+    counter_data: "/counter/data"
+    counter_reset: "/counter/reset"
+    counter_reset_result: "/counter/reset/result"
+    cloud_status: "/cloud/status"
+
+garbage:
+  recyclable:
+    a: 0
+    name: "可回收垃圾"
+    ui_name: "Recyclable"
+    code: "0001"
+    gpio: 17
+  kitchen:
+    a: 1
+    name: "厨余垃圾"
+    ui_name: "Kitchen"
+    code: "0010"
+    gpio: 27
+  hazardous:
+    a: 2
+    name: "有害垃圾"
+    ui_name: "Hazardous"
+    code: "0100"
+    gpio: 23
+  other:
+    a: 3
+    name: "其他垃圾"
+    ui_name: "Other"
+    code: "1000"
+    gpio: 24
+
+vision:
+  model_path: "/home/sunrise/code/camera/best_bayese_640x640_nv12.bin"
+  labels_path: "/home/sunrise/code/camera/classes.names"
+  camera_index: 0
+  width: 1280
+  height: 720
+  fps: 30
+  use_mjpg: true
+  preview_interval_ms: 100
+  roi:
+    x1: 200
+    y1: 180
+    x2: 1100
+    y2: 680
+  score_threshold: 0.60
+  nms_threshold: 0.45
+  letterbox_value: 0
+  bpu_core: 0
+  bpu_priority: 0
+  target_cooldown_s: 3.0
+  no_target_publish_s: 1.0
+  yolo_classes:
+    class_0:
+      name: "zhituan"
+      a: 0
+    class_1:
+      name: "pinggai"
+      a: 0
+    class_2:
+      name: "dianchi"
+      a: 2
+    class_3:
+      name: "jiaodai"
+      a: 3
+
+control:
+  dry_run: false
+  active_low_seconds: 1.0
+  post_action_cooldown_s: 2.0
+  queue_size: 16
+  result_cache_size: 200
+
+counter:
+  recent_event_limit: 2000
+
+cloud:
+  enabled: true
+  base_url: "http://154.64.254.49"
+  device_id: "HB-000"
+  device_key: "yt7SsH2ewihprXynPyTKvQncLAdsexnn"
+  verify_tls: true
+  timeout_s: 5.0
+  report_interval_s: 1.0
+  command_poll_interval_s: 1.0
+  execution_wait_s: 10.0
+  firmware: "rdk-x5-smartbin-4.0"
+
+ui:
+  display: ":0"
+  window_title: "RDK X5 智能垃圾分类系统"
+  fullscreen: true
+  refresh_interval_ms: 100
+  count_fallback_interval_ms: 1000
+  show_camera: true

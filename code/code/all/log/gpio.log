@@ -1,0 +1,15 @@
+[GPIO] dry_run=False，动作=1.0s，动作后冷却=2.0s
+[GPIO] a=3 其他垃圾 -> GPIO24 拉低 1.00s
+[GPIO] 结果 {'a': 3, 'x': 406, 'y': 526, 'code': '1000', 'gpio': 24, 'success': True, 'error': '', 'source': 'vision', 'request_id': '1786413170825963188-vision-r1-a3', 'cloud_command_id': None, 'event_id': '1786413171831014048-a3', 'finished_at': 1786413171.8310251}
+[GPIO] a=3 其他垃圾 -> GPIO24 拉低 1.00s
+[GPIO] 结果 {'a': 3, 'x': 418, 'y': 506, 'code': '1000', 'gpio': 24, 'success': True, 'error': '', 'source': 'vision', 'request_id': '1786413189912529931-vision-r1-a3', 'cloud_command_id': None, 'event_id': '1786413190917304621-a3', 'finished_at': 1786413190.9173157}
+[GPIO] a=3 其他垃圾 -> GPIO24 拉低 1.00s
+[GPIO] 结果 {'a': 3, 'x': 420, 'y': 590, 'code': '1000', 'gpio': 24, 'success': True, 'error': '', 'source': 'vision', 'request_id': '1786413892483683722-vision-r1-a3', 'cloud_command_id': None, 'event_id': '1786413893489190968-a3', 'finished_at': 1786413893.4892037}
+[GPIO] a=2 有害垃圾 -> GPIO23 拉低 1.00s
+[GPIO] 结果 {'a': 2, 'x': 714, 'y': 321, 'code': '0100', 'gpio': 23, 'success': True, 'error': '', 'source': 'vision', 'request_id': '1786413922730370479-vision-r2-a2', 'cloud_command_id': None, 'event_id': '1786413923735078794-a2', 'finished_at': 1786413923.7350888}
+[GPIO] a=0 可回收垃圾 -> GPIO17 拉低 1.00s
+[GPIO] 结果 {'a': 0, 'x': 1100, 'y': 458, 'code': '0001', 'gpio': 17, 'success': True, 'error': '', 'source': 'vision', 'request_id': '1786413926296508711-vision-r4-a0', 'cloud_command_id': None, 'event_id': '1786413927301740287-a0', 'finished_at': 1786413927.3017523}
+[GPIO] a=3 其他垃圾 -> GPIO24 拉低 1.00s
+[GPIO] 结果 {'a': 3, 'x': 432, 'y': 266, 'code': '1000', 'gpio': 24, 'success': True, 'error': '', 'source': 'vision', 'request_id': '1786414021204345465-vision-r1-a3', 'cloud_command_id': None, 'event_id': '1786414022209356766-a3', 'finished_at': 1786414022.2093685}
+[GPIO] a=0 可回收垃圾 -> GPIO17 拉低 1.00s
+[GPIO] 结果 {'a': 0, 'x': 1100, 'y': 445, 'code': '0001', 'gpio': 17, 'success': True, 'error': '', 'source': 'vision', 'request_id': '1786414039289034055-vision-r4-a0', 'cloud_command_id': None, 'event_id': '1786414040293960058-a0', 'finished_at': 1786414040.29397}

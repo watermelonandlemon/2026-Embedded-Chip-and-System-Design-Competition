@@ -1,0 +1,20 @@
+[VISION] 加载模型：/home/sunrise/code/camera/best_bayese_640x640_nv12.bin
+[BPU_PLAT]BPU Platform Version(1.3.6)! soc info(x5)
+[HBRT] set log level as 0. version = 3.15.55.0
+[DNN] Runtime version = 1.24.5_(3.15.55 HBRT)
+[A][DNN][packed_model.cpp:247][Model](2026-08-11,09:42:01.720.8) [HorizonRT] The model builder version = 1.24.3
+[VISION] 模型输入：640x640，输出=6
+[VISION] 模型就绪，用时 383.8ms
+[VISION] 摄像头请求：1280x720@30 MJPG
+[VISION] 摄像头实际：1280x720@30.0 FOURCC=MJPG
+[VISION] UI预览帧：/dev/shm/rdk_smartbin_latest.png，刷新间隔=0.100s
+[VISION] 触发区域：R1=400~700 其他，R2=700~950 有害，R3=950~1100 厨余，R4=>=1100 可回收
+[VISION] 等待摄像头首帧
+[VISION] 模型类别数：4
+[VISION] 区域匹配，发送 R1 (a,x,y)=(3,406,526) score=0.736
+[VISION] 区域匹配，发送 R1 (a,x,y)=(3,418,506) score=0.838
+[VISION] 区域匹配，发送 R1 (a,x,y)=(3,420,590) score=0.836
+[VISION] 区域匹配，发送 R2 (a,x,y)=(2,714,321) score=0.833
+[VISION] 区域匹配，发送 R4 (a,x,y)=(0,1100,458) score=0.739
+[VISION] 区域匹配，发送 R1 (a,x,y)=(3,432,266) score=0.683
+[VISION] 区域匹配，发送 R4 (a,x,y)=(0,1100,445) score=0.780
